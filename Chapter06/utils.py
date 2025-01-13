@@ -7,8 +7,8 @@ from math import floor, ceil
 
 import io
 from scipy.io import wavfile
-from moviepy.editor import VideoFileClip
-
+#from moviepy.editor import VideoFileClip
+from moviepy.video.io.VideoFileClip import VideoFileClip
 import numpy as np
 import torch
 
