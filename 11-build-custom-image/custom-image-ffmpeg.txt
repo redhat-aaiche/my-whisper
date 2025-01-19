@@ -1,0 +1,21 @@
+# source image : AI267 - registry.ocp4.example.com:8443/opendatahub/workbench-images:jupyter-datascience-ubi9-python-3.9-2023b-20240219-ffe72a0
+# 
+# Containerfile:
+
+podman build . -t registry.ocp4.example.com:8443/student/custom-image-ffmpeg:1.0
+
+
+[student@workstation aa]$ podman images
+REPOSITORY                                                   TAG                                                         IMAGE ID      CREATED        SIZE
+registry.ocp4.example.com:8443/student/custom-image-ffmpeg   1.0                                                         f2d7221cf306  2 minutes ago  3.07 GB
+registry.ocp4.example.com:8443/opendatahub/workbench-images  jupyter-datascience-ubi9-python-3.9-2023b-20240219-ffe72a0  769eda83a903  11 months ago  2.9 GB
+[student@workstation aa]$ 
+
+podman login registry.ocp4.example.com:8443 -u developer -p developer
+
+podman push registry.ocp4.example.com:8443/student/custom-image-ffmpeg:1.0
+
+RHOAI: admin
+import notebook images
+registry.ocp4.example.com:8443/student/custom-image-ffmpeg:1.0
+

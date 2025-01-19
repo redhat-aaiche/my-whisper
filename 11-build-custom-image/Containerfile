@@ -1,0 +1,16 @@
+FROM registry.ocp4.example.com:8443/opendatahub/workbench-images:jupyter-datascience-ubi9-python-3.9-2023b-20240219-ffe72a0
+
+
+RUN echo "Installing ffmpeg : static install - WARNING: check the source" 
+USER root
+#RUN whoami
+RUN curl https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz -o ffmpeg.tar.xz  && \
+    tar -xf ffmpeg.tar.xz -C /opt && \
+    rm ffmpeg.tar.xz
+    #tar -xf ffmpeg.tar.xz && \
+#RUN echo $PATH
+ENV PATH="${PATH}:/opt/ffmpeg-7.0.2-amd64-static/"
+RUN echo "export PATH=$PATH" > /etc/environment
+USER default
+#RUN whoami
+#RUN echo $PATH
